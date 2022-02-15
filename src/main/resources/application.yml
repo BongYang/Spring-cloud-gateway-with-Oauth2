@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - name: PreFilter
+          args:
+            baseMessage: Spring Cloud Gateway GlobalFilter
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: employeeModule
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/employee/**
+        - id: consumerModule
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/consumer/**
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 225629507652-arlhg4li1d44q0ukotloolb4ttcptlc2.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile,email
+            client-name: google
+  data:
+    mongodb:
+      host: localhost  #local에서는 'localhost', docker server에서는 'mongodb'로 설정
+      port: 27017
+      database: SCG
+      authentication-database: admin
