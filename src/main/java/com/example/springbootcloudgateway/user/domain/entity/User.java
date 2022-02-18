@@ -1,13 +1,10 @@
-package com.example.springbootcloudgateway.entity;
+package com.example.springbootcloudgateway.user.domain.entity;
 
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.security.oauth2.core.oidc.user.OidcUser;
-
-import java.io.Serializable;
 
 @Getter //lombok , 모든 field 값의 getter 매소드를 자동 생성
 @NoArgsConstructor // lombok , 기본 생성자 자동추가

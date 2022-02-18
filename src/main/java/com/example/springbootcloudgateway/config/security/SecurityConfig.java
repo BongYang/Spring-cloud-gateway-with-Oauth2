@@ -1,5 +1,6 @@
-package com.example.springbootcloudgateway.config.oauth.security;
+package com.example.springbootcloudgateway.config.security;
 
+import com.example.springbootcloudgateway.user.domain.entity.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableReactiveMethodSecurity;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
@@ -19,15 +20,17 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityWebFilterChain securityWebFilterChain(final ServerHttpSecurity serverHttpSecurity) {
+    public SecurityWebFilterChain securityWebFilterChain(final ServerHttpSecurity http) throws Exception {
 
-        return serverHttpSecurity
+        return http
                 .csrf().disable()
                 .httpBasic().disable()
                 .formLogin().disable()
                 .authorizeExchange()
-                .pathMatchers("/api/**").authenticated()
+                .pathMatchers("/user/**").hasRole(Role.USER.getKey())
                 .anyExchange().permitAll()
+//                .pathMatchers("/api/**").authenticated()
+//                .anyExchange().permitAll()
                 .and().oauth2Login(withDefaults())
                 .logout()
                 .and().exceptionHandling()

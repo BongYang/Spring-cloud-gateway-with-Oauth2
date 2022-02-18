@@ -1,4 +1,4 @@
-package com.example.springbootcloudgateway.filter;
+package com.example.springbootcloudgateway.common.filter;
 import lombok.Data;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

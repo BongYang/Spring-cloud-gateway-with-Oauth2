@@ -1,6 +1,6 @@
-package com.example.springbootcloudgateway.dto;
+package com.example.springbootcloudgateway.user.dto;
 
-import com.example.springbootcloudgateway.entity.User;
+import com.example.springbootcloudgateway.user.domain.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 

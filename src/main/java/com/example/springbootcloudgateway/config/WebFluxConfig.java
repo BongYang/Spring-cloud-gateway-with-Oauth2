@@ -1,4 +1,4 @@
-package com.example.springbootcloudgateway.config.oauth;
+package com.example.springbootcloudgateway.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.CorsRegistry;
@@ -19,10 +19,12 @@ public class WebFluxConfig implements WebFluxConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry
                 .addMapping("/**")
-                .allowedOrigins("*")
+                .allowedOriginPatterns("*")
                 .allowedHeaders("*")
                 .allowedMethods("*")
                 .allowCredentials(true)
+//                .allowCredentials(false)
                 .allowedMethods("GET", "POST", "PUT", "DELETE");
     }
 }
+

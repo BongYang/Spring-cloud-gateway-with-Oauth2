@@ -1,4 +1,4 @@
-package com.example.springbootcloudgateway.entity;
+package com.example.springbootcloudgateway.user.domain.entity;
 
 
 import org.springframework.data.mongodb.repository.MongoRepository;

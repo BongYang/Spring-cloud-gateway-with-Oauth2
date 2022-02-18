@@ -1,8 +1,8 @@
-package com.example.springbootcloudgateway.service;
+package com.example.springbootcloudgateway.user.service;
 
-import com.example.springbootcloudgateway.dto.OAuthAttributes;
-import com.example.springbootcloudgateway.entity.User;
-import com.example.springbootcloudgateway.entity.UserRepository;
+import com.example.springbootcloudgateway.user.dto.OAuthAttributes;
+import com.example.springbootcloudgateway.user.domain.entity.User;
+import com.example.springbootcloudgateway.user.domain.entity.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.*;
