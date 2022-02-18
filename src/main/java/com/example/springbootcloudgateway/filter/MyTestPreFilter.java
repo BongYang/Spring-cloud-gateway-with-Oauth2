@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 
 @Slf4j
 @Component
-public class PreFilter implements GlobalFilter {
+public class MyTestPreFilter implements GlobalFilter {
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain)

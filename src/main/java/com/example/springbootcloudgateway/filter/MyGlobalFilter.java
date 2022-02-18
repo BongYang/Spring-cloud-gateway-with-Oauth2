@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 @Component
-public class GlobalFilter_ extends AbstractGatewayFilterFactory<GlobalFilter_.Config> {
-    private static final Logger logger = LogManager.getLogger(GlobalFilter_.class);
+public class MyGlobalFilter extends AbstractGatewayFilterFactory<MyGlobalFilter.Config> {
+    private static final Logger logger = LogManager.getLogger(MyGlobalFilter.class);
 
-    public GlobalFilter_() {
+    public MyGlobalFilter() {
         super(Config.class);
     }
 

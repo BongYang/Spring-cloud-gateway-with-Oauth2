@@ -10,6 +10,7 @@ public class GatewayController {
     public Mono<String> test(){
         return Mono.just("this is GateWay");
     }
+
     @GetMapping("/api/hello")
     public Mono<String> hello(){
         return Mono.just("hello");

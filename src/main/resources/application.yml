@@ -5,7 +5,7 @@ spring:
   cloud:
     gateway:
       default-filters:
-        - name: PreFilter
+        - name: MyGlobalFilter
           args:
             baseMessage: Spring Cloud Gateway GlobalFilter
             preLogger: true
@@ -22,10 +22,10 @@ spring:
   security:
     oauth2:
       client:
-        registration:
-          google:
-            client-id: 225629507652-arlhg4li1d44q0ukotloolb4ttcptlc2.apps.googleusercontent.com
-            client-secret: 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
+        registration: # spring.security.oauth2.client.registration is the base property prefix for OAuth Client Properties
+          google: # Following the base property prefix is the ID for the ClientRegistraion, such as google
+            client-id: ""
+            client-secret: ""
             scope: profile,email
             client-name: google
   data:
@@ -34,3 +34,5 @@ spring:
       port: 27017
       database: SCG
       authentication-database: admin
+#      username: knuipalab
+#      password: knuipalab418

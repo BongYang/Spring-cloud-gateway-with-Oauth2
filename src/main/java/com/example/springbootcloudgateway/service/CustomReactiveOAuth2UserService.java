@@ -1,6 +1,6 @@
-package com.example.springbootcloudgateway.configuration.oauth;
+package com.example.springbootcloudgateway.service;
 
-import com.example.springbootcloudgateway.configuration.oauth.dto.OAuthAttributes;
+import com.example.springbootcloudgateway.dto.OAuthAttributes;
 import com.example.springbootcloudgateway.entity.User;
 import com.example.springbootcloudgateway.entity.UserRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.example.springbootcloudgateway.configuration.oauth.dto;
+package com.example.springbootcloudgateway.dto;
 
 import com.example.springbootcloudgateway.entity.User;
 import lombok.Builder;
