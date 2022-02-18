@@ -37,4 +37,6 @@ out/
 .vscode/
 
 .DSstore
-application.yml
+
+### config ###
+src/main/resources/application.yml
