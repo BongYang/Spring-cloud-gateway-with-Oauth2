@@ -1,38 +1,68 @@
-server:
-  port: 8080
-
 spring:
-  cloud:
-    gateway:
-      default-filters:
-        - name: MyGlobalFilter
-          args:
-            baseMessage: Spring Cloud Gateway GlobalFilter
-            preLogger: true
-            postLogger: true
-      routes:
-        - id: employeeModule
-          uri: http://localhost:8081/
-          predicates:
-            - Path=/employee/**
-        - id: consumerModule
-          uri: http://localhost:8082/
-          predicates:
-            - Path=/consumer/**
-  security:
-    oauth2:
-      client:
-        registration: # spring.security.oauth2.client.registration is the base property prefix for OAuth Client Properties
-          google: # Following the base property prefix is the ID for the ClientRegistraion, such as google
-            client-id: ""
-            client-secret: ""
-            scope: profile,email
-            client-name: google
-  data:
-    mongodb:
-      host: localhost  #local에서는 'localhost', docker server에서는 'mongodb'로 설정
-      port: 27017
-      database: SCG
-      authentication-database: admin
-#      username: knuipalab
-#      password: knuipalab418
+  profiles:
+    active: local
+    include: 'security, db, management, gateway'
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: false
+    add-properties: false
+  jmx:
+    enabled: false
+  main:
+    banner-mode: off
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration, org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+  session:
+    store-type: mongodb
+
+server:
+  port: 80
+  error:
+    whitelabel:
+      enabled: false
+
+logging:
+  level:
+    org.springframework: INFO
+    org.springframework.web: DEBUG
+    com.jwon: DEBUG
+
+# dev env
+---
+spring:
+  profiles: dev
+  devtools:
+    restart:
+      enabled: false
+hostLocation : localhost
+
+server:
+  http2:
+    enabled: true
+  compression:
+    enabled: true
+    mime-types: application/json
+    min-response-size: 1024
+  forward-headers-strategy: native
+
+# prod env
+---
+spring:
+  profiles: prod
+  devtools:
+    restart:
+      enabled: false
+hostLocation : localhost
+
+server:
+  http2:
+    enabled: true
+  error:
+    include-stacktrace: never
+  compression:
+    enabled: true
+    mime-types: application/json
+    min-response-size: 1024
+  forward-headers-strategy: native
