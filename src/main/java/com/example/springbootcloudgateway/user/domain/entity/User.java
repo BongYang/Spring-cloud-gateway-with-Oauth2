@@ -15,18 +15,16 @@ public class User {
     private String userId;
 
     private String name;
-
     private String email;
-
     private String picture;
-
-    private String role = "ROLE_USER";
+    private String role;
 
     @Builder
-    public User(String name, String email, String picture) {
+    public User(String name, String email, String picture, String role) {
         this.name = name;
         this.email = email;
         this.picture = picture;
+        this.role = role;
     }
 
     public User update(String name, String picture) {
