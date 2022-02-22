@@ -1,0 +1,29 @@
+package com.jwon.oauth2.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.reactive.config.CorsRegistry;
+import org.springframework.web.reactive.config.EnableWebFlux;
+import org.springframework.web.reactive.config.ResourceHandlerRegistry;
+import org.springframework.web.reactive.config.WebFluxConfigurer;
+
+@Configuration
+@EnableWebFlux
+public class WebFluxConfig implements WebFluxConfigurer {
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+    }
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry
+                .addMapping("/**")
+                .allowedOriginPatterns("*")
+                .allowedHeaders("*")
+                .allowedMethods("*")
+                .allowCredentials(true)
+//                .allowCredentials(false)
+                .allowedMethods("GET", "POST", "PUT", "DELETE");
+    }
+}
