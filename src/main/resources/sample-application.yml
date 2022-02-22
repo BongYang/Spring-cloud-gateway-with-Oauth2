@@ -54,7 +54,7 @@ spring:
   devtools:
     restart:
       enabled: false
-hostLocation : localhost
+hostLocation : localhost # hostLocation
 
 server:
   http2:

@@ -1,6 +1,5 @@
 package com.example.springbootcloudgateway.user.domain.entity;
 
-
 import com.example.springbootcloudgateway.user.domain.provider.AuthProvider;
 import com.example.springbootcloudgateway.user.web.dto.OAuth2UserInfoDto;
 import lombok.AccessLevel;
@@ -9,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
@@ -36,7 +36,7 @@ public abstract class OAuth2UserInfo implements OidcUser, Serializable {
 
     protected String nickName;
 
-    protected String authProvider;
+    protected String authProvider; // Naver, Kakao, Google
 
     protected String image;
 
@@ -87,6 +87,30 @@ public abstract class OAuth2UserInfo implements OidcUser, Serializable {
             } else {
                 this.image = "";
             }
+        }
+        return this;
+    }
+
+    @Secured("ROLE_ADMIN")
+    public OAuth2UserInfo beGuest() {
+        if (this.role != Role.ADMIN.getKey()) {
+            this.role = Role.GUEST.getKey();
+        }
+        return this;
+    }
+
+    @Secured("ROLE_ADMIN")
+    public OAuth2UserInfo beUser() {
+        if (this.role != Role.ADMIN.getKey()) {
+            this.role = Role.USER.getKey();
+        }
+        return this;
+    }
+
+    @Secured("ROLE_ADMIN")
+    public OAuth2UserInfo beAdmin() {
+        if (this.role != Role.ADMIN.getKey()) {
+            this.role = Role.ADMIN.getKey();
         }
         return this;
     }

@@ -1,4 +1,4 @@
-package com.example.springbootcloudgateway.config.security;
+package com.example.springbootcloudgateway.config;
 
 import com.example.springbootcloudgateway.user.domain.entity.Role;
 import org.springframework.context.annotation.Bean;

@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      default-filters:
+          name: MyGlobalFilter
+          args:
+            baseMessage: Spring Cloud Gateway GlobalFilter
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: apiModule # Set routes you want
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/api/**

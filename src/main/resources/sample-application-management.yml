@@ -1,0 +1,31 @@
+management:
+  endpoints:
+    web:
+      base-path: /monitor
+      exposure:
+        include: health, metrics
+      cors:
+        allowed-origins: http://localhost
+        allowed-methods: GET
+
+# dev env
+---
+spring:
+  profiles: dev
+management:
+  endpoints:
+    web:
+      cors:
+        allowed-origins: https://localhost
+        allowed-methods: GET
+
+# prod env
+---
+spring:
+  profiles: prod
+management:
+  endpoints:
+    web:
+      cors:
+        allowed-origins: https://localhost
+        allowed-methods: GET

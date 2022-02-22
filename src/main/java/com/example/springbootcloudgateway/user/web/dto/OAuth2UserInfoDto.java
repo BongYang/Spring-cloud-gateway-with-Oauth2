@@ -44,4 +44,15 @@ public class OAuth2UserInfoDto {
             this.image = image;
         }
     }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PRIVATE)
+    public static class RoleDto {
+        private String role;
+
+        @Builder
+        private RoleDto(final String role) {
+            this.role = role;
+        }
+    }
 }

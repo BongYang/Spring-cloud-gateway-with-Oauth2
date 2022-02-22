@@ -1,6 +1,5 @@
 package com.example.springbootcloudgateway.user.domain.entity;
 
-
 import com.example.springbootcloudgateway.user.domain.provider.AuthProvider;
 
 import java.util.Map;

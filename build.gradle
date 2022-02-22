@@ -9,6 +9,10 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
     compileOnly {
         extendsFrom annotationProcessor
     }
@@ -26,16 +30,38 @@ dependencyManagement {
 
 dependencies {
 
+//    implementation 'org.springframework.boot:spring-boot-starter'
+//    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+//    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+//    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+//    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+//
+//    compileOnly 'org.projectlombok:lombok'
+//    annotationProcessor 'org.projectlombok:lombok'
+//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
     implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb-reactive'
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-gateway'
+
+    implementation 'org.springframework.boot:spring-boot-starter-validation:2.6.3'
+    // session
+    implementation 'org.springframework.session:spring-session-data-mongodb'
 
     compileOnly 'org.projectlombok:lombok'
+//    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation 'io.projectreactor:reactor-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {

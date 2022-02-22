@@ -1,15 +1,16 @@
-package com.example.springbootcloudgateway.common.filter;
+package com.example.springbootcloudgateway.filter;
+
 import lombok.Data;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @Component
 public class MyGlobalFilter extends AbstractGatewayFilterFactory<MyGlobalFilter.Config> {
-    private static final Logger logger = LogManager.getLogger(MyGlobalFilter.class);
+//    private static final Logger logger = LogManager.getLogger(MyGlobalFilter.class);
 
     public MyGlobalFilter() {
         super(Config.class);
@@ -18,13 +19,14 @@ public class MyGlobalFilter extends AbstractGatewayFilterFactory<MyGlobalFilter.
     @Override
     public GatewayFilter apply(Config config) {
         return ((exchange, chain) -> {
-            logger.info("GlobalFilter baseMessage>>>>>>" + config.getBaseMessage());
+//            exchange.getRequest().getHeaders().add("user_email", user_email);
+            log.info("GlobalFilter baseMessage>>>>>>" + config.getBaseMessage());
             if (config.isPreLogger()) {
-                logger.info("GlobalFilter Start>>>>>>" + exchange.getRequest());
+                log.info("GlobalFilter Start>>>>>>" + exchange.getRequest());
             }
             return chain.filter(exchange).then(Mono.fromRunnable(()->{
                 if (config.isPostLogger()) {
-                    logger.info("GlobalFilter End>>>>>>" + exchange.getResponse());
+                    log.info("GlobalFilter End>>>>>>" + exchange.getResponse());
                 }
             }));
         });

@@ -1,7 +1,6 @@
 package com.example.springbootcloudgateway.user.repository;
 
 import com.example.springbootcloudgateway.user.domain.entity.OAuth2UserInfo;
-import com.example.springbootcloudgateway.user.domain.entity.User;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Mono;
 
